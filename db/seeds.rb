@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "🌱 Seeding spices..."
 
 
 50.times do
@@ -16,16 +17,18 @@
         inventory: rand(1..1000)
     )
 
+    search = product.title.split(' ')
+
     Image.create(
-        image_url: Faker::LoremPixel.image,
+        image_url:Faker::LoremFlickr.image(size: "300x200", search_terms: [search[2]]),
         product_id: product.id
     )
     Image.create(
-        image_url: Faker::LoremPixel.image,
+        image_url:Faker::LoremFlickr.image(size: "300x200", search_terms: [search[2]]),
         product_id: product.id
     )
     Image.create(
-        image_url: Faker::LoremPixel.image,
+        image_url:Faker::LoremFlickr.image(size: "300x200", search_terms: [search[2]]),
         product_id: product.id
     )
 end

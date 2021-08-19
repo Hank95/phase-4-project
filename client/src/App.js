@@ -9,12 +9,19 @@ import Landing from "./components/Landing";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+      }
+    });
+
+    fetch("/products").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setProducts(user));
       }
     });
   }, []);
@@ -30,7 +37,7 @@ function App() {
             <Cart user={user} />
           </Route>
           <Route path="/products">
-            <Products user={user} />
+            <Products products={products} />
           </Route>
           <Route path="/">
             <Landing />
