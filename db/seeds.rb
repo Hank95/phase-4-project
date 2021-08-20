@@ -28,7 +28,7 @@ puts "🌱 Seeding spices..."
         product_id: product.id
     )
     Image.create(
-        image_url:Faker::LoremFlickr.image(size: "300x200", search_terms: [search[2]]),
+        image_url:Faker::LoremFlickr.image(size: "300x200", search_terms: [2]),
         product_id: product.id
     )
 end

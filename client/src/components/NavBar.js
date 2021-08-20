@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import laurel from "./assets/laurellogo.svg";
 const NavBar = ({ user, setUser }) => {
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -12,7 +13,9 @@ const NavBar = ({ user, setUser }) => {
   return (
     <Container>
       <Logo>
-        <Link to="/">Commerce</Link>
+        <Link to="/">
+          <img src={laurel} alt="logo" />
+        </Link>
       </Logo>
       <Nav>
         <NavButton as={Link} to="/products">

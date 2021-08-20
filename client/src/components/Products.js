@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 import ReactPaginate from "react-paginate";
 
 const PER_PAGE = 20;
-const Products = ({ products }) => {
+const Products = ({ products, handleAddCart }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
   function handlePageClick({ selected: selectedPage }) {
@@ -23,7 +23,11 @@ const Products = ({ products }) => {
       <FilterBar> Filter Search</FilterBar>
       <Container>
         {currentPageData.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            handleAddCart={handleAddCart}
+          />
         ))}
       </Container>
       <Wrapper>

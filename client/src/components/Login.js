@@ -2,13 +2,14 @@ import { useState } from "react";
 import styled from "styled-components";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
+import laurel from "./assets/laurellogo.svg";
 
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
     <Wrapper>
-      <Logo>Logo</Logo>
+      <img src={laurel} alt="logo" />
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
@@ -32,12 +33,12 @@ function Login({ onLogin }) {
   );
 }
 
-const Logo = styled.h1`
-  font-family: "Helvetica";
-  font-size: 3rem;
-  color: orangered;
-  margin: 8px 0 16px;
-`;
+// const Logo = styled.h1`
+//   font-family: "Helvetica";
+//   font-size: 3rem;
+//   color: orangered;
+//   margin: 8px 0 16px;
+// `;
 
 const Wrapper = styled.section`
   max-width: 500px;
