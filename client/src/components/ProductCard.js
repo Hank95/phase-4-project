@@ -1,36 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ product, handleAddCart }) => {
-  const [bought, setBought] = useState(false);
-
+const ProductCard = ({ product }) => {
   const handleInfo = (id) => {
     console.log(id);
   };
 
   const src = `/products/${product.id}`;
 
-  const handleClick = (id) => {
-    console.log(id);
-    if (!bought) {
-      handleAddCart(id);
-      setBought(true);
-    } else {
-      return;
-    }
-  };
+  console.log(product);
   return (
     <Card key={product.id}>
       <MoreInfo as={Link} to={src} onClick={() => handleInfo(product.id)}>
         <Image src={product.images[0].image_url} alt="Product" />
         <h2>{product.title}</h2>
         <p>{product.sub_title}</p>
-        <p>{product.price / 100.0}</p>
+        <p>${product.price / 100.0}</p>
       </MoreInfo>
-      <Button onClick={() => handleClick(product.id)}>
-        {bought ? "Added!" : "Add to Cart"}
-      </Button>
     </Card>
   );
 };
@@ -42,7 +29,7 @@ const Image = styled.img`
 
 const Card = styled.div`
   height: auto;
-  width: 20vw;
+  width: 30vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,23 +47,6 @@ const MoreInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const Button = styled.button`
-  cursor: pointer;
-  font-size: 1.3rem;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  padding: 8px 16px;
-  text-decoration: none;
-  width: 65%;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
 `;
 
 export default ProductCard;

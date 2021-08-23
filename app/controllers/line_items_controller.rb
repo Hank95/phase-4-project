@@ -2,15 +2,16 @@ class LineItemsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     wrap_parameters format: []
 
-    def show 
+    def index 
         user = @current_user
         items = user.line_items.all
-        rend json: items
+        render json: items
     end
 
     def create 
         user = @current_user
-        items = user.shopping_cart.line_items.create(item_params)
+        item = user.shopping_cart.line_items.create(item_params)
+        render json: item
     end
 
     private

@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
-import "semantic-ui-css/semantic.min.css";
+// import "semantic-ui-css/semantic.min.css";
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -21,6 +21,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   }
+  a { 
+    color:black; 
+    text-decoration: none;
+
+    }
 `;
 
 ReactDOM.render(

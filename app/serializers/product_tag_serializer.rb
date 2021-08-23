@@ -1,5 +1,5 @@
 class ProductTagSerializer < ActiveModel::Serializer
   attributes :id
-  has_one :tag
-  has_one :product
+  belongs_to :tag
+  belongs_to :product
 end

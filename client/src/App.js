@@ -23,14 +23,22 @@ function App() {
 
     fetch("/products").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setProducts(user));
+        r.json().then((products) => setProducts(products));
+      }
+    });
+    fetch("/line_items").then((r) => {
+      if (r.ok) {
+        r.json().then((cart) => setShoppingCart(cart));
       }
     });
   }, []);
 
-  const handleAddCart = (id) => {
-    let item = products[id - 1];
-    setShoppingCart([...shoppingCart, item]);
+  const handleAddCart = (id, quantity) => {
+    let item = products.find((item) => item.id === id);
+
+    if (shoppingCart.some((cart) => cart.product.id === item.id)) {
+      console.log("already added");
+    }
 
     fetch("/line_items", {
       method: "POST",
@@ -39,9 +47,11 @@ function App() {
       },
       body: JSON.stringify({
         product_id: id,
-        quantity: 1,
+        quantity: quantity,
       }),
-    });
+    })
+      .then((response) => response.json())
+      .then((item) => setShoppingCart([...shoppingCart, item]));
   };
 
   console.log(shoppingCart);
@@ -54,13 +64,13 @@ function App() {
       <main>
         <Switch>
           <Route path="/cart">
-            <Cart user={user} />
+            <Cart shoppingCart={shoppingCart} />
           </Route>
           <Route path="/products/:id">
-            <ProductDetails />
+            <ProductDetails handleAddCart={handleAddCart} />
           </Route>
           <Route path="/products">
-            <Products products={products} handleAddCart={handleAddCart} />
+            <Products products={products} />
           </Route>
           <Route path="/">
             <Landing />
