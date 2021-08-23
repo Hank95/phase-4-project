@@ -33,11 +33,38 @@ function App() {
     });
   }, []);
 
+  const updateLineItemQuantityFrontend = (id, quantity) => {
+    const updatedData = shoppingCart.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: quantity,
+        };
+      } else {
+        return item;
+      }
+    });
+    setShoppingCart(updatedData);
+  };
+
+  const updateLineItemQuantity = (lineItemID, quantity) => {
+    updateLineItemQuantityFrontend(lineItemID, quantity);
+    fetch(`/line_items/${lineItemID}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        quantity: quantity,
+      }),
+    });
+  };
+
   const handleAddCart = (id, quantity) => {
     let item = products.find((item) => item.id === id);
 
     if (shoppingCart.some((cart) => cart.product.id === item.id)) {
-      console.log("already added");
+      let line = shoppingCart.find((cart) => cart.product.id === item.id);
+      console.log(line);
+      return updateLineItemQuantity(line.id, quantity);
     }
 
     fetch("/line_items", {
@@ -54,7 +81,13 @@ function App() {
       .then((item) => setShoppingCart([...shoppingCart, item]));
   };
 
-  console.log(shoppingCart);
+  const removeFromCart = (lineItemID) => {
+    let updatedCart = shoppingCart.filter((item) => item.id !== lineItemID);
+    setShoppingCart(updatedCart);
+    fetch(`/line_items/${lineItemID}`, {
+      method: "DELETE",
+    });
+  };
 
   if (!user) return <Login onLogin={setUser} />;
 
@@ -64,7 +97,12 @@ function App() {
       <main>
         <Switch>
           <Route path="/cart">
-            <Cart shoppingCart={shoppingCart} />
+            <Cart
+              shoppingCart={shoppingCart}
+              products={products}
+              updateLineItemQuantity={updateLineItemQuantity}
+              removeFromCart={removeFromCart}
+            />
           </Route>
           <Route path="/products/:id">
             <ProductDetails handleAddCart={handleAddCart} />

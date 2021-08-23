@@ -26,8 +26,6 @@ const Products = ({ products, handleAddCart }) => {
       .then((json) => setTags(json));
   }, []);
 
-  console.log(tags);
-
   return (
     <div>
       <FilterBar> Filter Search</FilterBar>

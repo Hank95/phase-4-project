@@ -1,3 +1,5 @@
 class TagSerializer < ActiveModel::Serializer
-  attributes :id, :content, :sub_content
+  attributes :id, :content
+
+  has_many :products
 end

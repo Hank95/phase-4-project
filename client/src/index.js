@@ -26,6 +26,13 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
 
     }
+
+  select{
+    border: none;
+    margin-left: 5px;
+    /* appearance: none; */
+    /* outline: none; */
+  }
 `;
 
 ReactDOM.render(

@@ -14,7 +14,26 @@ class LineItemsController < ApplicationController
         render json: item
     end
 
+    def update
+        item = find_item
+        item.update(item_params)
+        render json: item
+
+    end
+
+    def destroy
+        item = find_item
+        item.destroy
+        head :no_content
+    end
+
+
     private
+
+    def find_item
+        @current_user.shopping_cart.line_items.find(params[:id])
+    end
+
 
     def item_params
         params.permit(:product_id, :quantity)

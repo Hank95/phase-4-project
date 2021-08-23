@@ -3,16 +3,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const handleInfo = (id) => {
-    console.log(id);
-  };
-
   const src = `/products/${product.id}`;
 
-  console.log(product);
   return (
     <Card key={product.id}>
-      <MoreInfo as={Link} to={src} onClick={() => handleInfo(product.id)}>
+      <MoreInfo as={Link} to={src}>
         <Image src={product.images[0].image_url} alt="Product" />
         <h2>{product.title}</h2>
         <p>{product.sub_title}</p>

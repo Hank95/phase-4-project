@@ -37,7 +37,6 @@ const ProductDetails = ({ handleAddCart }) => {
   }, [id]);
 
   const handleClick = (id) => {
-    console.log(id);
     if (!bought) {
       handleAddCart(id, quantity);
       setBought(true);
@@ -50,7 +49,6 @@ const ProductDetails = ({ handleAddCart }) => {
   const handleChange = (e) => {
     setQuantity(parseInt(e.target.value));
   };
-  console.log(quantity);
 
   const handleImageClick = (right) => {
     const maxImage = images.length - 1;
@@ -89,7 +87,7 @@ const ProductDetails = ({ handleAddCart }) => {
         <h1>{productDetails.title}</h1>
         <p>{productDetails.description}</p>
 
-        <label for="quant">Qantity</label>
+        <label for="quant">Quantity</label>
         <select name="quant" onChange={handleChange}>
           <option value="1">1</option>
           <option value="2">2</option>
