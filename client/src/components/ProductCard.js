@@ -32,8 +32,7 @@ const Card = styled.div`
   border: 1px solid transparent;
 
   &:hover {
-    border: 1px solid black;
-    border-radius: 6px;
+    box-shadow: 0px 0px 15px 0px #848484;
   }
 `;
 const MoreInfo = styled.div`

@@ -17,7 +17,13 @@ const LineItemCard = ({
   );
   const src = `/products/${product.id}`;
 
-  let price = (lineItem.product.price * lineItem.quantity) / 100.0;
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  let price = numberWithCommas(
+    (lineItem.product.price * lineItem.quantity) / 100.0
+  );
 
   const handleQantChange = (e) => {
     setQuantity(e.target.value);

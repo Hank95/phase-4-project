@@ -12,6 +12,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
   const [shoppingCart, setShoppingCart] = useState([]);
+  const [tags, setTags] = useState([]);
 
   useEffect(() => {
     // auto-login
@@ -20,7 +21,6 @@ function App() {
         r.json().then((user) => setUser(user));
       }
     });
-
     fetch("/products").then((r) => {
       if (r.ok) {
         r.json().then((products) => setProducts(products));
@@ -31,7 +31,14 @@ function App() {
         r.json().then((cart) => setShoppingCart(cart));
       }
     });
+    fetch("/tags").then((r) => {
+      if (r.ok) {
+        r.json().then((tags) => setTags(tags));
+      }
+    });
   }, []);
+
+  console.log(tags);
 
   const updateLineItemQuantityFrontend = (id, quantity) => {
     const updatedData = shoppingCart.map((item) => {
@@ -93,7 +100,7 @@ function App() {
 
   return (
     <>
-      <NavBar user={user} setUser={setUser} />
+      <NavBar user={user} setUser={setUser} cart={shoppingCart.length} />
       <main>
         <Switch>
           <Route path="/cart">
@@ -102,6 +109,7 @@ function App() {
               products={products}
               updateLineItemQuantity={updateLineItemQuantity}
               removeFromCart={removeFromCart}
+              user={user}
             />
           </Route>
           <Route path="/products/:id">

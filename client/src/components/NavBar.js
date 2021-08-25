@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import laurel from "./assets/laurellogo.svg";
-const NavBar = ({ user, setUser }) => {
+const NavBar = ({ user, setUser, cart }) => {
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -10,23 +10,27 @@ const NavBar = ({ user, setUser }) => {
       }
     });
   }
+  console.log(cart);
   return (
-    <Container>
+    <div>
       <Logo>
         <Link to="/">
           <img src={laurel} alt="logo" />
         </Link>
       </Logo>
-      <Nav>
-        <NavButton as={Link} to="/products">
-          Products
-        </NavButton>
-        <NavButton as={Link} to="/cart">
-          Cart
-        </NavButton>
-        <NavButton onClick={handleLogoutClick}>Log Out</NavButton>
-      </Nav>
-    </Container>
+      <Container>
+        <Nav>
+          <NavButton as={Link} to="/products">
+            Products
+          </NavButton>
+          <NavButton as={Link} to="/cart">
+            Cart
+          </NavButton>
+          {cart > 0 ? <Icon>{cart}</Icon> : null}
+          <NavButton onClick={handleLogoutClick}>Log Out</NavButton>
+        </Nav>
+      </Container>
+    </div>
   );
 };
 const Container = styled.header`
@@ -37,6 +41,9 @@ const Container = styled.header`
 `;
 
 const Logo = styled.h1`
+  position: relative;
+  top: 0;
+  left: 0;
   font-family: "hevetica";
   font-size: 3rem;
   color: orangered;
@@ -53,8 +60,10 @@ const Nav = styled.nav`
   display: flex;
   gap: 4px;
   position: absolute;
-  right: 8px;
+  top: 10vh;
+  right: 10px;
 `;
+
 const NavButton = styled.button`
   cursor: pointer;
   font-size: 1.3rem;
@@ -66,6 +75,15 @@ const NavButton = styled.button`
     color: inherit;
     text-decoration: none;
   }
+`;
+
+const Icon = styled.div`
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: orangered;
+  color: white;
+  text-align: center;
 `;
 
 export default NavBar;

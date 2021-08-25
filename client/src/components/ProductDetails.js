@@ -68,9 +68,13 @@ const ProductDetails = ({ handleAddCart }) => {
     }
   };
 
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   if (!isLoaded) return <h2>Loading...</h2>;
 
-  console.log(activeImage);
+  const price = numberWithCommas(productDetails.price / 100);
 
   return (
     <Container>
@@ -85,7 +89,9 @@ const ProductDetails = ({ handleAddCart }) => {
           </NextRight>
         </Wrapper>
         <h1>{productDetails.title}</h1>
-        <p>{productDetails.description}</p>
+        <p>
+          {productDetails.description} / ${price}
+        </p>
 
         <label for="quant">Quantity</label>
         <select name="quant" onChange={handleChange}>
