@@ -7,6 +7,7 @@ import Cart from "./components/Cart";
 import Products from "./components/Products";
 import Landing from "./components/Landing";
 import ProductDetails from "./components/ProductDetails";
+import Footer from "./components/Footer";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -123,6 +124,7 @@ function App() {
           </Route>
         </Switch>
       </main>
+      <Footer />
     </>
   );
 }

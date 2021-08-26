@@ -38,11 +38,12 @@ const Container = styled.header`
   justify-content: center;
   align-items: center;
   padding: 8px;
+  height: 150px;
 `;
 
-const Logo = styled.h1`
-  position: relative;
-  top: 0;
+const Logo = styled.div`
+  position: absolute;
+  top: -10px;
   left: 0;
   font-family: "hevetica";
   font-size: 3rem;
@@ -60,13 +61,13 @@ const Nav = styled.nav`
   display: flex;
   gap: 4px;
   position: absolute;
-  top: 10vh;
+  top: 50px;
   right: 10px;
 `;
 
 const NavButton = styled.button`
   cursor: pointer;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   border: 1px solid transparent;
   border-radius: 6px;
   padding: 8px 16px;
@@ -74,6 +75,9 @@ const NavButton = styled.button`
   a {
     color: inherit;
     text-decoration: none;
+  }
+  &:hover {
+    box-shadow: 0px 0px 15px 0px #848484;
   }
 `;
 

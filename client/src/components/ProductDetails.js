@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import leftArrow from "./assets/left-arrow.svg";
 import rightArrow from "./assets/right-arrow.svg";
+import AddedToCartModal from "./AddedToCartModal";
 
 const ProductDetails = ({ handleAddCart }) => {
   const [productDetails, setProductDetails] = useState([]);
@@ -13,6 +14,7 @@ const ProductDetails = ({ handleAddCart }) => {
   ]);
   const [activeImage, setActiveImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [modal, setModal] = useState(false);
 
   // Pull ID of appropriate project from URL (:id)
   // using useParams Hook
@@ -35,11 +37,15 @@ const ProductDetails = ({ handleAddCart }) => {
         setImages(data.images);
       });
   }, [id]);
+  const handleModal = (value) => {
+    setModal(value);
+  };
 
   const handleClick = (id) => {
     if (!bought) {
       handleAddCart(id, quantity);
       setBought(true);
+      handleModal(true);
     } else {
       return;
     }
@@ -78,6 +84,9 @@ const ProductDetails = ({ handleAddCart }) => {
 
   return (
     <Container>
+      {modal ? (
+        <AddedToCartModal toggleModal={handleModal} product={productDetails} />
+      ) : null}
       <Card>
         <Wrapper>
           <Image src={images[activeImage].image_url} alt="product image" />

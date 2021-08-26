@@ -66,7 +66,7 @@ function SignUpForm({ onLogin }) {
           autoComplete="current-password"
         />
       </FormField>
-      <FormField>
+      {/* <FormField>
         <Label htmlFor="bio">Bio</Label>
         <Textarea
           rows="3"
@@ -74,9 +74,9 @@ function SignUpForm({ onLogin }) {
           value={bio}
           onChange={(e) => setBio(e.target.value)}
         />
-      </FormField>
+      </FormField> */}
       <FormField>
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+        <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
       </FormField>
       <FormField>
         {errors.map((err) => (
@@ -128,6 +128,23 @@ const Textarea = styled.textarea`
   line-height: 1.5;
   padding: 4px;
   resize: none;
+`;
+const Button = styled.button`
+  cursor: pointer;
+  font-size: 1.3rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 16px;
+  text-decoration: none;
+  width: 100%;
+  background-color: rgba(0, 57, 7, 0.5);
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 export default SignUpForm;

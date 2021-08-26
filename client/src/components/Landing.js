@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Landing = () => {
   return (
     <div>
-      <Image src={hero} alt="Landing Hero Wheel" />;
+      <Image src={hero} alt="Landing Hero Wheel" />
       {/* <TagLine>
         "Grab a bunch of bikes and ride them around with your friends. It's the
         shit." - tyler the Creator
@@ -31,7 +31,7 @@ const Landing = () => {
           </Button>
           <Divider />
           <h3>Check out all our great bike in stock!</h3>
-          <Button as={Link} to="/products">
+          <Button as={Link} to="/products" style={{ maxWidth: "300px" }}>
             Bikes!
           </Button>
         </Copy>
@@ -64,6 +64,7 @@ const Content = styled.div`
   grid-template-columns: 2fr 1fr;
   column-gap: 6vw;
   position: relative;
+  margin: 10px 30px 10px 30px;
 `;
 
 const Copy = styled.div`
@@ -80,17 +81,20 @@ const Button = styled.button`
   font-size: 1.3rem;
   border: 1px solid transparent;
   border-radius: 6px;
-  padding: 8px 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /* padding: 8px 16px; */
   text-decoration: none;
   width: 100%;
+  max-width: 300px;
   display: flex;
   justify-content: center;
   align-self: center;
   background-color: rgba(0, 57, 7, 0.5);
-  a {
+  /* a {
     color: inherit;
     text-decoration: none;
-  }
+  } */
 `;
 
 export default Landing;

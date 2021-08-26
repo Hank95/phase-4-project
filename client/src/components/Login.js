@@ -19,7 +19,7 @@ function Login({ onLogin }) {
             <Divider />
             <p>
               Don't have an account? &nbsp;
-              <button onClick={() => setShowLogin(false)}>Sign Up</button>
+              <Button onClick={() => setShowLogin(false)}>Sign Up</Button>
             </p>
           </>
         ) : (
@@ -28,7 +28,7 @@ function Login({ onLogin }) {
             <Divider />
             <p>
               Already have an account? &nbsp;
-              <button onClick={() => setShowLogin(true)}>Log In</button>
+              <Button onClick={() => setShowLogin(true)}>Log In</Button>
             </p>
           </>
         )}
@@ -73,6 +73,23 @@ const Divider = styled.hr`
   border: none;
   border-bottom: 1px solid #ccc;
   margin: 16px 0;
+`;
+const Button = styled.button`
+  cursor: pointer;
+  font-size: 1.3rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 16px;
+  text-decoration: none;
+  width: 100%;
+  background-color: rgba(0, 57, 7, 0.5);
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 export default Login;
