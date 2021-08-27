@@ -1,14 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import laurel from "./assets/laurellogo.svg";
-const NavBar = ({ user, setUser, cart }) => {
+const NavBar = ({ user, setUser, cart, resetCart }) => {
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
+        // resetCart();
       }
     });
+    handleBack();
+  }
+  // Pull history object using useHistory Hook
+  let history = useHistory();
+
+  // Create Callback Function to handle "Back" Button
+  function handleBack() {
+    history.goBack();
   }
   console.log(cart);
   return (

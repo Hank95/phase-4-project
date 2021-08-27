@@ -19,12 +19,12 @@ const Products = ({ products, handleAddCart }) => {
 
   const pageCount = Math.ceil(products.length / PER_PAGE);
 
-  // Filter
-  useEffect(() => {
-    fetch("/tags")
-      .then((res) => res.json())
-      .then((json) => setTags(json));
-  }, []);
+  // // Filter
+  // useEffect(() => {
+  //   fetch("/tags")
+  //     .then((res) => res.json())
+  //     .then((json) => setTags(json));
+  // }, []);
 
   return (
     <div>

@@ -5,6 +5,7 @@ class LineItemsController < ApplicationController
     def index 
         user = @current_user
         items = user.line_items.all
+        # byebug 
         render json: items
     end
 

@@ -22,14 +22,32 @@ function App() {
         r.json().then((user) => setUser(user));
       }
     });
-    fetch("/products").then((r) => {
-      if (r.ok) {
-        r.json().then((products) => setProducts(products));
-      }
-    });
+    // fetch("/line_items").then((r) => {
+    //   if (r.ok) {
+    //     r.json().then((cart) => setShoppingCart(cart));
+    //   }
+    // });
+    // fetch("/products").then((r) => {
+    //   if (r.ok) {
+    //     r.json().then((products) => setProducts(products));
+    //   }
+    // });
+    // fetch("/tags").then((r) => {
+    //   if (r.ok) {
+    //     r.json().then((tags) => setTags(tags));
+    //   }
+    // });
+  }, []);
+
+  useEffect(() => {
     fetch("/line_items").then((r) => {
       if (r.ok) {
         r.json().then((cart) => setShoppingCart(cart));
+      }
+    });
+    fetch("/products").then((r) => {
+      if (r.ok) {
+        r.json().then((products) => setProducts(products));
       }
     });
     fetch("/tags").then((r) => {
@@ -37,9 +55,9 @@ function App() {
         r.json().then((tags) => setTags(tags));
       }
     });
-  }, []);
+  }, [user]);
 
-  console.log(tags);
+  console.log(user);
 
   const updateLineItemQuantityFrontend = (id, quantity) => {
     const updatedData = shoppingCart.map((item) => {
@@ -96,12 +114,20 @@ function App() {
       method: "DELETE",
     });
   };
+  const resetCart = () => {
+    setShoppingCart([]);
+  };
 
   if (!user) return <Login onLogin={setUser} />;
 
   return (
     <>
-      <NavBar user={user} setUser={setUser} cart={shoppingCart.length} />
+      <NavBar
+        user={user}
+        setUser={setUser}
+        cart={shoppingCart.length}
+        resetCart={resetCart}
+      />
       <main>
         <Switch>
           <Route path="/cart">

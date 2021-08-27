@@ -4,6 +4,7 @@ import styled from "styled-components";
 import leftArrow from "./assets/left-arrow.svg";
 import rightArrow from "./assets/right-arrow.svg";
 import AddedToCartModal from "./AddedToCartModal";
+import Reviews from "./Reviews";
 
 const ProductDetails = ({ handleAddCart }) => {
   const [productDetails, setProductDetails] = useState([]);
@@ -15,6 +16,7 @@ const ProductDetails = ({ handleAddCart }) => {
   const [activeImage, setActiveImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [modal, setModal] = useState(false);
+  const [reviews, setReviews] = useState([]);
 
   // Pull ID of appropriate project from URL (:id)
   // using useParams Hook
@@ -36,7 +38,27 @@ const ProductDetails = ({ handleAddCart }) => {
         setIsLoaded(true);
         setImages(data.images);
       });
+
+    fetch(`/reviews/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setReviews(data);
+      });
   }, [id]);
+
+  const createReview = (content) => {
+    fetch("/reviews", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        product_id: id,
+        content: content,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => setReviews([...reviews, json]));
+  };
+
   const handleModal = (value) => {
     setModal(value);
   };
@@ -115,7 +137,8 @@ const ProductDetails = ({ handleAddCart }) => {
           {bought ? "Added!" : "Add to Cart"}
         </Button>
       </Card>
-      <button onClick={handleBack}>Back</button>
+      {/* <button onClick={handleBack}>Back</button> */}
+      <Reviews reviews={reviews} createReview={createReview} />
     </Container>
   );
 };

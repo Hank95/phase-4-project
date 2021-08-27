@@ -40,7 +40,7 @@ const LineItemCard = ({
           <h3>{lineItem.product.title}</h3>
           <p>{lineItem.product.sub_title}</p>
         </ContentContainer>
-        <PAndQ>
+        <AddCart>
           <label for="quant">Quantity</label>
           <select name="quant" value={quantity} onChange={handleQantChange}>
             <option value="1">1</option>
@@ -50,9 +50,8 @@ const LineItemCard = ({
             <option value="5">5</option>
           </select>
           <h4>${price}</h4>
-
           <Button onClick={() => removeFromCart(lineItem.id)}>Remove X</Button>
-        </PAndQ>
+        </AddCart>
       </ItemCard>
       <Divider />
     </div>
@@ -80,7 +79,7 @@ const Image = styled.img`
   width: 100%;
   height: auto;
 `;
-const PAndQ = styled.div`
+const AddCart = styled.div`
   position: absolute;
   right: 0;
 `;
@@ -89,12 +88,12 @@ const ContentContainer = styled.div`
 `;
 
 const Button = styled.button`
-  background: none;
   color: inherit;
   border: none;
   padding: 0;
   font: inherit;
   cursor: pointer;
+  margin: auto;
   outline: inherit;
   &:hover {
     color: red;
