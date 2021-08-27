@@ -22,21 +22,6 @@ function App() {
         r.json().then((user) => setUser(user));
       }
     });
-    // fetch("/line_items").then((r) => {
-    //   if (r.ok) {
-    //     r.json().then((cart) => setShoppingCart(cart));
-    //   }
-    // });
-    // fetch("/products").then((r) => {
-    //   if (r.ok) {
-    //     r.json().then((products) => setProducts(products));
-    //   }
-    // });
-    // fetch("/tags").then((r) => {
-    //   if (r.ok) {
-    //     r.json().then((tags) => setTags(tags));
-    //   }
-    // });
   }, []);
 
   useEffect(() => {

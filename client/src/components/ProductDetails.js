@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import leftArrow from "./assets/left-arrow.svg";
 import rightArrow from "./assets/right-arrow.svg";
@@ -21,14 +21,6 @@ const ProductDetails = ({ handleAddCart }) => {
   // Pull ID of appropriate project from URL (:id)
   // using useParams Hook
   const id = useParams().id;
-
-  // Pull history object using useHistory Hook
-  let history = useHistory();
-
-  // Create Callback Function to handle "Back" Button
-  function handleBack() {
-    history.goBack();
-  }
 
   useEffect(() => {
     fetch(`/products/${id}`)

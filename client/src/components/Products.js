@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ProductCard from "./ProductCard";
 import ReactPaginate from "react-paginate";
@@ -6,7 +6,6 @@ import ReactPaginate from "react-paginate";
 const PER_PAGE = 4;
 const Products = ({ products, handleAddCart }) => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [tags, setTags] = useState("all");
 
   // Pagination
   function handlePageClick({ selected: selectedPage }) {
@@ -18,13 +17,6 @@ const Products = ({ products, handleAddCart }) => {
   const currentPageData = products.slice(offset, offset + PER_PAGE);
 
   const pageCount = Math.ceil(products.length / PER_PAGE);
-
-  // // Filter
-  // useEffect(() => {
-  //   fetch("/tags")
-  //     .then((res) => res.json())
-  //     .then((json) => setTags(json));
-  // }, []);
 
   return (
     <div>

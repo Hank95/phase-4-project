@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import hero from "./assets/heroTyler.png";
 import { Link } from "react-router-dom";
@@ -7,10 +7,6 @@ const Landing = () => {
   return (
     <div>
       <Image src={hero} alt="Landing Hero Wheel" />
-      {/* <TagLine>
-        "Grab a bunch of bikes and ride them around with your friends. It's the
-        shit." - tyler the Creator
-      </TagLine> */}
       <Content>
         <Copy>
           <h3> Speed, Design, Bespoke Quality</h3>
@@ -40,11 +36,6 @@ const Landing = () => {
   );
 };
 
-const Hero = styled.div`
-  width: 100%;
-  height: 65vh;
-  position: relative;
-`;
 const Image = styled.img`
   /* object-fit: contain; */
   z-index: -1;

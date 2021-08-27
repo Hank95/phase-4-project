@@ -43,10 +43,5 @@ const MoreInfo = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const Divider = styled.hr`
-  border: none;
-  border-bottom: 1px solid black;
-  margin: 16px 0;
-`;
 
 export default ProductCard;

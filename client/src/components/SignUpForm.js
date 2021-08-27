@@ -66,15 +66,6 @@ function SignUpForm({ onLogin }) {
           autoComplete="current-password"
         />
       </FormField>
-      {/* <FormField>
-        <Label htmlFor="bio">Bio</Label>
-        <Textarea
-          rows="3"
-          id="bio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
-      </FormField> */}
       <FormField>
         <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
       </FormField>
@@ -117,18 +108,6 @@ const Input = styled.input`
   padding: 4px;
 `;
 
-const Textarea = styled.textarea`
-  border-radius: 6px;
-  border: 1px solid transparent;
-  border-color: #dbdbdb;
-  -webkit-appearance: none;
-  max-width: 100%;
-  width: 100%;
-  font-size: 1rem;
-  line-height: 1.5;
-  padding: 4px;
-  resize: none;
-`;
 const Button = styled.button`
   cursor: pointer;
   font-size: 1.3rem;
