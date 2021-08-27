@@ -29,7 +29,7 @@ function LoginForm({ onLogin }) {
   return (
     <form onSubmit={handleSubmit}>
       <FormField>
-        <Label htmlFor="username">Username</Label>
+        <Label htmlFor="username">Username:</Label>
         <Input
           type="text"
           id="username"
@@ -39,7 +39,7 @@ function LoginForm({ onLogin }) {
         />
       </FormField>
       <FormField>
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password">Password:</Label>
         <Input
           type="password"
           id="password"
@@ -79,7 +79,7 @@ const Label = styled.label`
   margin-bottom: 8px;
 `;
 const Input = styled.input`
-  border-radius: 6px;
+  /* border-radius: 6px; */
   border: 1px solid transparent;
   border-color: #dbdbdb;
   -webkit-appearance: none;
@@ -93,7 +93,7 @@ const Button = styled.button`
   cursor: pointer;
   font-size: 1.3rem;
   border: 1px solid transparent;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   padding: 8px 16px;
   text-decoration: none;
   width: 100%;

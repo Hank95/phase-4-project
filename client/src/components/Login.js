@@ -18,7 +18,7 @@ function Login({ onLogin }) {
             <LoginForm onLogin={onLogin} />
             <Divider />
             <p>
-              Don't have an account? &nbsp;
+              New here? &nbsp;
               <Button onClick={() => setShowLogin(false)}>Sign Up</Button>
             </p>
           </>
@@ -62,26 +62,26 @@ const Image = styled.img`
 `;
 
 const Wrapper = styled.section`
-  max-width: 500px;
+  max-width: 400px;
   margin: 10vh auto;
   padding: 16px;
   background-color: white;
-  border-radius: 6px;
+  /* border-radius: 6px; */
 `;
 const Logo = styled.img`
-  margin-left: 18%;
+  margin-left: 13%;
 `;
 
 const Divider = styled.hr`
   border: none;
   border-bottom: 1px solid #ccc;
-  margin: 16px 0;
+  margin: 16px 0 16px 0;
 `;
 const Button = styled.button`
   cursor: pointer;
   font-size: 1.3rem;
   border: 1px solid transparent;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   padding: 8px 16px;
   text-decoration: none;
   width: 100%;

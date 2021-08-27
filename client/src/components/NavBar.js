@@ -10,7 +10,6 @@ const NavBar = ({ user, setUser, cart, resetCart }) => {
         resetCart();
       }
     });
-    handleBack();
   }
   // Pull history object using useHistory Hook
   let history = useHistory();
@@ -36,7 +35,9 @@ const NavBar = ({ user, setUser, cart, resetCart }) => {
             Cart
           </NavButton>
           {cart > 0 ? <Icon>{cart}</Icon> : null}
-          <NavButton onClick={handleLogoutClick}>Log Out</NavButton>
+          <NavButton as={Link} to="/" onClick={handleLogoutClick}>
+            Log Out
+          </NavButton>
         </Nav>
       </Container>
     </div>
@@ -72,7 +73,7 @@ const Nav = styled.nav`
   gap: 4px;
   position: absolute;
   top: 50px;
-  right: 10px;
+  right: 20px;
 `;
 
 const NavButton = styled.button`
