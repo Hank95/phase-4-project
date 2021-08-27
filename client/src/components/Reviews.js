@@ -39,7 +39,7 @@ const Reviews = ({ reviews, createReview }) => {
       {reviews.map((review) => {
         return (
           <Rater key={review.id}>
-            <h3>User: {review.user.username}</h3>
+            <h3>{review.user.username} says:</h3>
             <Comment>{review.content}</Comment>
             <Divider />
           </Rater>

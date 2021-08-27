@@ -11,7 +11,8 @@ const ProductCard = ({ product }) => {
         <Image src={product.images[0].image_url} alt="Product" />
         <h2>{product.title}</h2>
         <p>{product.sub_title}</p>
-        <p>${product.price / 100.0}</p>
+        {/* <Divider /> */}
+        <h4>${product.price / 100.0}</h4>
       </MoreInfo>
     </Card>
   );
@@ -41,6 +42,11 @@ const MoreInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+const Divider = styled.hr`
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 16px 0;
 `;
 
 export default ProductCard;
