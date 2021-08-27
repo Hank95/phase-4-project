@@ -76,6 +76,7 @@ const EmptyCart = styled.h2`
   display: flex;
   margin-top: 20vh;
   margin-left: 43%;
+  margin-bottom: 20vh; //
 `;
 
 const Container = styled.div`

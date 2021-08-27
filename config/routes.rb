@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   
   resources :line_items
-  resources :shopping_carts
-  resources :product_tags
-  resources :tags
-  resources :images
-  resources :reviews
-  resources :users
-  resources :products
+  # resources :shopping_carts
+  # resources :product_tags
+  # resources :tags
+  # resources :images
+  resources :reviews, only: [:show, :create]
+  resources :users, only: [:show, :create]
+  resources :products, only: [:show, :index]
 
 
   post "/signup", to: "users#create"

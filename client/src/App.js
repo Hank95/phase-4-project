@@ -13,7 +13,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [tags, setTags] = useState([]);
+  // const [tags, setTags] = useState([]);
 
   useEffect(() => {
     // auto-login
@@ -50,11 +50,11 @@ function App() {
         r.json().then((products) => setProducts(products));
       }
     });
-    fetch("/tags").then((r) => {
-      if (r.ok) {
-        r.json().then((tags) => setTags(tags));
-      }
-    });
+    // fetch("/tags").then((r) => {
+    //   if (r.ok) {
+    //     r.json().then((tags) => setTags(tags));
+    //   }
+    // });
   }, [user]);
 
   console.log(user);

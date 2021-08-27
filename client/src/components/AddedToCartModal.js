@@ -20,7 +20,9 @@ const AddedToCartModal = ({ product, toggleModal }) => {
       </ContentContainer>
 
       <ContentContainer>
-        <Button onClick={() => toggleModal(false)}>Continue Shopping</Button>
+        <Button as={Link} to="/products">
+          Continue Shopping
+        </Button>
         <Button as={Link} to="/cart">
           Cart and Checkout
         </Button>

@@ -28,7 +28,6 @@ const Products = ({ products, handleAddCart }) => {
 
   return (
     <div>
-      <FilterBar> Filter Search</FilterBar>
       <Container>
         {currentPageData.map((product) => (
           <ProductCard
@@ -55,12 +54,9 @@ const Products = ({ products, handleAddCart }) => {
   );
 };
 
-const FilterBar = styled.div`
-  width: 100%;
-  height: 10%;
-`;
 const Container = styled.div`
   margin-left: 12.5%;
+  margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 2vh;

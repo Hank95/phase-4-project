@@ -7,7 +7,7 @@ const NavBar = ({ user, setUser, cart, resetCart }) => {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
-        // resetCart();
+        resetCart();
       }
     });
     handleBack();
@@ -48,6 +48,7 @@ const Container = styled.header`
   align-items: center;
   padding: 8px;
   height: 150px;
+  border-bottom: 4px solid rgb(47, 98, 104);
 `;
 
 const Logo = styled.div`

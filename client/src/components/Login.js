@@ -12,7 +12,7 @@ function Login({ onLogin }) {
     <Page>
       <Image src={image} alt="background" />
       <Wrapper>
-        <img src={laurel} alt="logo" />
+        <Logo src={laurel} alt="logo" />
         {showLogin ? (
           <>
             <LoginForm onLogin={onLogin} />
@@ -67,6 +67,9 @@ const Wrapper = styled.section`
   padding: 16px;
   background-color: white;
   border-radius: 6px;
+`;
+const Logo = styled.img`
+  margin-left: 18%;
 `;
 
 const Divider = styled.hr`
